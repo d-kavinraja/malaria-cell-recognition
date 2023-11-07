@@ -36,11 +36,9 @@ Evaluate the model with the testing data using probability prediction(uninfected
 Fit the model and predict the sample input.
 
 ## PROGRAM
-
-```python
-
-```
-```python
+```py
+# Name : Kavinraja D 
+# RegNo:212222240047
 import os
 import pandas as pd
 import numpy as np
@@ -54,6 +52,8 @@ from tensorflow.keras import utils
 from tensorflow.keras import models
 from sklearn.metrics import classification_report,confusion_matrix
 import tensorflow as tf
+
+
 # to share the GPU resources for multiple sessions
 from tensorflow.compat.v1.keras.backend import set_session
 config = tf.compat.v1.ConfigProto()
@@ -62,8 +62,9 @@ config.log_device_placement = True # to log device placement (on which device th
 sess = tf.compat.v1.Session(config=config)
 set_session(sess)
 %matplotlib inline
-# for college server
-my_data_dir = '/home/ailab/hdd/dataset/cell_images'
+
+
+my_data_dir = 'dataset/cell_images'
 os.listdir(my_data_dir)
 test_path = my_data_dir+'/test/'
 train_path = my_data_dir+'/train/'
@@ -86,17 +87,18 @@ for image_filename in os.listdir(test_path+'/uninfected'):
     dim2.append(d2)
 sns.jointplot(x=dim1,y=dim2)
 image_shape = (130,130,3)
-image_gen = ImageDataGenerator(rotation_range=20, # rotate the image 20 degrees
-                               width_shift_range=0.10, # Shift the pic width by a max of 5%
-                               height_shift_range=0.10, # Shift the pic height by a max of 5%
-                               rescale=1/255, # Rescale the image by normalzing it.
-                               shear_range=0.1, # Shear means cutting away part of the image (max 10%)
-                               zoom_range=0.1, # Zoom in by 10% max
-                               horizontal_flip=True, # Allo horizontal flipping
-                               fill_mode='nearest' # Fill in missing pixels with the nearest filled value
-                              )
+image_gen = ImageDataGenerator(rotation_range=20, 
+                               width_shift_range=0.10,
+                               height_shift_range=0.10, 
+                               rescale=1/255, 
+                               shear_range=0.1,
+                               zoom_range=0.1, 
+                               horizontal_flip=True, 
+                               fill_mode='nearest' )
 image_gen.flow_from_directory(train_path)
 image_gen.flow_from_directory(test_path)
+
+
 model = models.Sequential()
 model.add(layers.Input(shape=(130,130,3))) 
 model.add(layers.Conv2D(filters=32,kernel_size=(3,3),padding="same",activation='relu'))
@@ -111,6 +113,8 @@ model.compile(optimizer='Adam',
               loss='binary_crossentropy',
               metrics=['accuracy'])
 model.summary()
+
+
 train_image_gen = image_gen.flow_from_directory(train_path,
                                                target_size=image_shape[:2],
                                                 color_mode='rgb',
@@ -148,7 +152,6 @@ if(x_single_prediction==1):
     print("Cell is UNINFECTED")
 else:
     print("Cell is PARASITIZED")
-
 
 ```
 ## OUTPUT
