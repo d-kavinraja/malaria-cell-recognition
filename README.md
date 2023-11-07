@@ -1,4 +1,4 @@
-### EXP NO: 04
+# EXP NO: 04
 
 #  Deep Neural Network for Malaria Infected Cell Recognition
 ## AIM
@@ -154,16 +154,18 @@ else:
 ```
 ## OUTPUT
 ### Training Loss, Validation Loss Vs Iteration Plot
-![Screenshot (435)](https://user-images.githubusercontent.com/75243072/193250270-08a6b329-3663-421f-9584-dc785d471b3b.png)
 
-### Classification Report and Confusion Matrix
-![Screenshot (438)](https://user-images.githubusercontent.com/75243072/193250332-c7bbec86-6dd1-4514-9216-921ee6ac437a.png)
+![output](./images/graph.png)
+### Classification Report 
+![output](./images/class_report.png)
 
-![Screenshot (436)](https://user-images.githubusercontent.com/75243072/193250385-e5bace63-44b8-4c01-8e1a-2a334db8702e.png)
+### Confusion Matrix
+![output](./images/c_matrix.png)
+
 
 ### New Sample Data Prediction
 
-![Screenshot (437)](https://user-images.githubusercontent.com/75243072/193250408-22bb3ee4-c241-4f33-8599-99a755b52032.png)
+![output](./images/pred.png)
 
 ## RESULT
  Thus, a deep neural network for Malaria infected cell recognition is developed and  the performance is analyzed.
